@@ -1,1 +1,3 @@
-
+Approach I (the entirety of residual spectra) - EIOT_exclusive_signature_PB_star3.m
+Approach II (only the best residual spectra)- EIOT_exclusive_signature_PB_star2.m
+Approach III (an optimal set of residual spectra) - EIOT_exclusive_signature_PB_star1.m
