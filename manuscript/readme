@@ -1,3 +1,92 @@
 Approach I (the entirety of residual spectra) - EIOT_exclusive_signature_PB_star3.m
 Approach II (only the best residual spectra)- EIOT_exclusive_signature_PB_star2.m
 Approach III (an optimal set of residual spectra) - EIOT_exclusive_signature_PB_star1.m
+
+Some of the example codes for project F - approach III
+for i=1:29
+ind=ones(311,1);
+ind(1:129)=0;
+ind(159:end)=0;
+ind(130+i-1)=0;
+ind=logical(ind);
+temp=SPEC_COMBINE.data(CLASS_COMBINE(:,2)==130+i-1,:);
+for j=1:10
+OUTPUT=EIOT_exclusive_signature_PB_star1(snv(K_Fene),RES_COMBINE_mean(ind,:),snv(temp(j,:)),Sim_Fene_snv);
+Temp2.r_hat(j,:)=OUTPUT.r_hat(:,1:size(K_Fene,1));
+Temp2.PACLS_pred(j,:)=OUTPUT.PACLS_pred(:,1:size(K_Fene,1));
+Temp2.EIOT_ssr(j,:)=OUTPUT.EIOT_ssr;
+Temp2.EIOT_ssr_relative(j,1)=OUTPUT.EIOT_ssr_relative;
+Temp2.NAS_T(j,1)=OUTPUT.NAS_T;
+Temp2.PACLS_ssr(j,:)=OUTPUT.PACLS_ssr;
+Temp2.PACLS_ssr_relative(j,1)=OUTPUT.PACLS_ssr_relative;
+Temp2.lamda_eqlin(j,1)=OUTPUT.lamda.eqlin;
+Temp2.lamda_lower(j,:)=OUTPUT.lamda.lower(1:size(K_Fene,1))';
+Temp2.lamda_upper(j,:)=OUTPUT.lamda.upper(1:size(K_Fene,1))';
+Temp2.EIOT_res(j,:)=OUTPUT.EIOT_res;
+Temp2.PACLS_res(j,:)=OUTPUT.PACLS_res;
+Temp2.SND(j,1)=OUTPUT.SND;
+end
+RESULTS.EIOT_pred(i*10-9:i*10,:)= Temp2.r_hat;
+RESULTS.PACLS_pred(i*10-9:i*10,:)= Temp2.PACLS_pred;
+RESULTS.EIOT_ssr(i*10-9:i*10,:)= Temp2.EIOT_ssr;
+RESULTS.EIOT_ssr_relative(i*10-9:i*10,1)= Temp2.EIOT_ssr_relative;
+RESULTS.NAS_T(i*10-9:i*10,1)= Temp2.NAS_T;
+RESULTS.PACLS_ssr(i*10-9:i*10,:)= Temp2.PACLS_ssr;
+RESULTS.PACLS_ssr_relative(i*10-9:i*10,1)= Temp2.PACLS_ssr_relative;
+RESULTS.lamda_eqlin(i*10-9:i*10,:)=Temp2.lamda_eqlin;
+RESULTS.lamda_upper(i*10-9:i*10,:)=Temp2.lamda_upper;
+RESULTS.lamda_lower(i*10-9:i*10,:)=Temp2.lamda_lower;
+RESULTS.EIOT_res(i*10-9:i*10,:)=Temp2.EIOT_res;
+RESULTS.PACLS_res(i*10-9:i*10,:)=Temp2.PACLS_res;
+RESULTS.SND(i*10-9:i*10,1)=Temp2.SND;
+i
+end
+
+
+Some of the example codes for project F - approach II
+for i=1:29
+ind=ones(311,1);
+ind(1:129)=0;
+ind(159:end)=0;
+ind(130+i-1)=0;
+ind=logical(ind);
+temp=SPEC_COMBINE.data(CLASS_COMBINE(:,2)==130+i-1,:);
+OUTPUT=EIOT_exclusive_signature_PB_star2(snv(K_Fene),RES_COMBINE_mean(ind,:),snv(temp),Sim_Fene_snv);
+RESULTS.EIOT_pred(i*10-9:i*10,:)= OUTPUT.EIOT_pred;
+RESULTS.PACLS_pred(i*10-9:i*10,:)= OUTPUT.PACLS_pred;
+RESULTS.EIOT_res(i*10-9:i*10,:)= OUTPUT.EIOT_res;
+RESULTS.EIOT_ssr_relative(i*10-9:i*10,1)= OUTPUT.EIOT_ssr_relative;
+RESULTS.NAS_T(i*10-9:i*10,1)= OUTPUT.NAS_T;
+RESULTS.PACLS_res(i*10-9:i*10,:)= OUTPUT.PACLS_res;
+RESULTS.PACLS_ssr_relative(i*10-9:i*10,1)= OUTPUT.PACLS_ssr_relative;
+RESULTS.lamda_eqlin(i*10-9:i*10,:)=OUTPUT.lamda_eqlin;
+RESULTS.lamda_upper(i*10-9:i*10,:)=OUTPUT.lamda_upper;
+RESULTS.lamda_lower(i*10-9:i*10,:)=OUTPUT.lamda_lower;
+RESULTS.EIOT_ssr(i*10-9:i*10,1)= OUTPUT.EIOT_ssr;
+RESULTS.PACLS_ssr(i*10-9:i*10,1)= OUTPUT.PACLS_ssr;
+i
+end
+
+Some of the example codes for project F - approach I
+for i=1:29
+ind=ones(311,1);
+ind(1:129)=0;
+ind(159:end)=0;
+ind(130+i-1)=0;
+ind=logical(ind);
+temp=SPEC_COMBINE.data(CLASS_COMBINE(:,2)==130+i-1,:);
+OUTPUT=EIOT_exclusive_signature_PB_star3(snv(K_Fene),RES_COMBINE_mean(ind,:),snv(temp),Sim_Fene_snv);
+RESULTS.EIOT_pred(i*10-9:i*10,:)= OUTPUT.EIOT_pred;
+RESULTS.PACLS_pred(i*10-9:i*10,:)= OUTPUT.PACLS_pred;
+RESULTS.EIOT_res(i*10-9:i*10,:)= OUTPUT.EIOT_res;
+RESULTS.EIOT_ssr_relative(i*10-9:i*10,1)= OUTPUT.EIOT_ssr_relative;
+RESULTS.NAS_T(i*10-9:i*10,1)= OUTPUT.NAS_T;
+RESULTS.PACLS_res(i*10-9:i*10,:)= OUTPUT.PACLS_res;
+RESULTS.PACLS_ssr_relative(i*10-9:i*10,1)= OUTPUT.PACLS_ssr_relative;
+RESULTS.lamda_eqlin(i*10-9:i*10,:)=OUTPUT.lamda_eqlin;
+RESULTS.lamda_upper(i*10-9:i*10,:)=OUTPUT.lamda_upper;
+RESULTS.lamda_lower(i*10-9:i*10,:)=OUTPUT.lamda_lower;
+RESULTS.EIOT_ssr(i*10-9:i*10,1)= OUTPUT.EIOT_ssr;
+RESULTS.PACLS_ssr(i*10-9:i*10,1)= OUTPUT.PACLS_ssr;
+i
+end
