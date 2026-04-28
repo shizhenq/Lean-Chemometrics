@@ -1,8 +1,8 @@
-Approach I (the entirety of residual spectra) - EIOT_exclusive_signature_PB_star3.m
-Approach II (only the best residual spectra)- EIOT_exclusive_signature_PB_star2.m
-Approach III (an optimal set of residual spectra) - EIOT_exclusive_signature_PB_star1.m
+%Approach I (the entirety of residual spectra) - EIOT_exclusive_signature_PB_star3.m
+%Approach II (only the best residual spectra)- EIOT_exclusive_signature_PB_star2.m
+%Approach III (an optimal set of residual spectra) - EIOT_exclusive_signature_PB_star1.m
 
-Example codes for project F - approach III
+%Example codes for project F - approach III
 for i=1:29
 ind=ones(311,1);
 ind(1:129)=0;
@@ -43,7 +43,7 @@ i
 end
 
 
-Example codes for project F - approach II
+%Example codes for project F - approach II
 for i=1:29
 ind=ones(311,1);
 ind(1:129)=0;
@@ -67,7 +67,8 @@ RESULTS.PACLS_ssr(i*10-9:i*10,1)= OUTPUT.PACLS_ssr;
 i
 end
 
-Example codes for project F - approach I
+
+%Example codes for project F - approach I
 for i=1:29
 ind=ones(311,1);
 ind(1:129)=0;
@@ -91,7 +92,8 @@ RESULTS.PACLS_ssr(i*10-9:i*10,1)= OUTPUT.PACLS_ssr;
 i
 end
 
-Example codes for project D - approach III
+
+%Example codes for project D - approach III
 for i=1:26
 ind=ones(311,1);
 ind(1:236)=0;
@@ -129,7 +131,8 @@ RESULTS.PACLS_res(i*10-9:i*10,:)=Temp2.PACLS_res;
 i
 end
 
-Example codes for project D - approach II
+
+%Example codes for project D - approach II
 for i=1:26
 ind=ones(311,1);
 ind(1:236)=0;
@@ -153,7 +156,8 @@ RESULTS.PACLS_ssr(i*10-9:i*10,1)= OUTPUT.PACLS_ssr;
 i
 end
 
-Example codes for project D - approach I
+
+%Example codes for project D - approach I
 for i=1:26
 ind=ones(311,1);
 ind(1:236)=0;
@@ -177,7 +181,8 @@ RESULTS.PACLS_ssr(i*10-9:i*10,1)= OUTPUT.PACLS_ssr;
 i
 end
 
-Example codes for project I - approach III
+
+%Example codes for project I - approach III
 for i=1:7
 ind=ones(311,1);
 ind(1:304)=0;
@@ -214,7 +219,8 @@ RESULTS.PACLS_res(i*10-9:i*10,:)=Temp2.PACLS_res;
 i
 end
 
-Example codes for project I - approach II
+
+%Example codes for project I - approach II
 for i=1:7
 ind=ones(311,1);
 ind(1:304)=0;
@@ -237,7 +243,8 @@ RESULTS.PACLS_ssr(i*10-9:i*10,1)= OUTPUT.PACLS_ssr;
 i
 end
 
-Example codes for project I - approach I
+
+%Example codes for project I - approach I
 for i=1:7
 ind=ones(311,1);
 ind(1:304)=0;
@@ -260,7 +267,8 @@ RESULTS.PACLS_ssr(i*10-9:i*10,1)= OUTPUT.PACLS_ssr;
 i
 end
 
-Example code to augment IOT with residual spectra from low to high residual for a sample spectrum
+
+%Example code to augment IOT with residual spectra from low to high residual for a sample spectrum
 i=11;
 ind=ones(311,1);
 ind(1:129)=0;
@@ -282,7 +290,8 @@ temp2(j,1:size(temp3,1))=c_E_hat_fur';
 end
 plotyy(1:28,sse_fur,1:28,abs(temp2(:,1)-0.2))
 
-Example code to save different residual spectra used by EIOT or PACLS for a given sample spectrum
+
+%Example code to save different residual spectra used by EIOT or PACLS for a given sample spectrum
 i=15;
 ind=ones(311,1);
 ind(1:129)=0;
