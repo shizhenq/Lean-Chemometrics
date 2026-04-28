@@ -259,3 +259,41 @@ RESULTS.EIOT_ssr(i*10-9:i*10,1)= OUTPUT.EIOT_ssr;
 RESULTS.PACLS_ssr(i*10-9:i*10,1)= OUTPUT.PACLS_ssr;
 i
 end
+
+Example code to augment IOT with residual spectra from low to high residual for a sample spectrum
+i=11;
+ind=ones(311,1);
+ind(1:129)=0;
+ind(159:end)=0;
+ind(130+i-1)=0;
+ind=logical(ind);
+temp=SPEC_COMBINE.data(CLASS_COMBINE(:,2)==130+i-1,:);
+temp1=RES_COMBINE_mean(ind,:);
+for j=1:size(temp1,1)
+[c_E_hat,Em,sse(j),lamda] = EIOT_PRED([snv(K_Fene)' temp1(j,:)'],1,snv(temp(2,:))',[-inf inf],1);
+end
+plot(1:size(temp1,1),sse)
+[C,I]=sort(sse,'ascend')
+temp2=zeros(size(temp1,1),size(temp1,1)+size(K_Fene,1));
+for j=1:size(temp1,1)
+[c_E_hat_fur,Em,sse_fur(j),lamda] = EIOT_PRED([snv(K_Fene)' temp1(I(1:j),:)'],length(I(1:j)),snv(temp(2,:))',[-inf inf],1);
+temp3=[(K_Fene); temp1(I(1:j),:)];
+temp2(j,1:size(temp3,1))=c_E_hat_fur';
+end
+plotyy(1:28,sse_fur,1:28,abs(temp2(:,1)-0.2))
+
+Example code to save different residual spectra used by EIOT or PACLS for a given sample spectrum
+i=15;
+ind=ones(311,1);
+ind(1:129)=0;
+ind(159:end)=0;
+ind(130+i-1)=0;
+ind=logical(ind);
+temp=SPEC_COMBINE.data(CLASS_COMBINE(:,2)==130+i-1,:);
+temp1=RES_COMBINE_mean(ind,:);
+OUTPUT=EIOT_exclusive_signature_PB_star1(snv(K_Fene),RES_COMBINE_mean(ind,:),snv(temp(4,:)),Sim_Fene_snv);
+close all
+plot(WL_AXIS,OUTPUT.vec_EIOT,'r-')
+hold on
+plot(WL_AXIS,OUTPUT.vec_PACLS+0.5,'b-')
+
